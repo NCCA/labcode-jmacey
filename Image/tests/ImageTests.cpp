@@ -123,6 +123,20 @@ TEST(IMAGE,setPixelRGBA)
 }
 
 
+TEST(IMAGE,save)
+{
+  Image img(400,400,255,255,255,255);
+  for(size_t y=100; y<300; ++y)
+  {
+    for(size_t x=100; x<300; ++x)
+    {
+      img.setPixel(x,y,255,0,0,255);
+    }
+  }
+  EXPECT_TRUE(img.save("test.png"));
+}
+
+
 
 
 

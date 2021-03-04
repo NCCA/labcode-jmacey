@@ -60,5 +60,18 @@ void Image::setPixel(size_t _x, size_t _y, RGBA _p)
 
 bool Image::save(std::string_view _fname) const
 {
- return true; 
+bool success=true;
+
+using namespace OIIO;
+std::unique_ptr<ImageOutput> out = ImageOutput::create (_fname.data());
+if(!out)
+{
+  return false;
+}
+ImageSpec spec (m_width,m_height,4, TypeDesc::UINT8);
+success=out->open(_fname.data(),spec);
+success=out->write_image(TypeDesc::UINT8,m_pixels.get());
+success=out->close();
+return success;
+  
 }
