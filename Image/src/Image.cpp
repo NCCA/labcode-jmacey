@@ -27,11 +27,6 @@ size_t Image::height() const
   return m_height;
 }
 
-RGBA Image::getPixel(size_t _x, size_t _y) const
-{
-  return m_pixels[_y*width()+_x];
-
-}
 
   void Image::clear(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a)
   {
@@ -40,6 +35,25 @@ RGBA Image::getPixel(size_t _x, size_t _y) const
     {
       m_pixels[i]=p;
     }
-
-
   }
+
+
+
+RGBA Image::getPixel(size_t _x, size_t _y) const
+{
+  return m_pixels[_y*m_width+_x];
+}
+
+
+void Image::setPixel(size_t _x, size_t _y, unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a)
+{
+  RGBA p{_r,_g,_b,_a};
+  m_pixels[_y*m_width+_x]=p;
+}
+
+void Image::setPixel(size_t _x, size_t _y, RGBA _p)
+{
+  m_pixels[_y*m_width+_x]=_p;
+}
+
+

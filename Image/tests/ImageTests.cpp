@@ -79,14 +79,48 @@ TEST(IMAGE,clear)
       ASSERT_EQ(p.a,255);
     }
   }
+}
 
+TEST(IMAGE,setPixel)
+{
+  Image img(640,480,255,255,255,255);
+  img.setPixel(0,0,255,0,0,255);
+  auto p=img.getPixel(0,0);
+  ASSERT_EQ(p.r,255);
+  ASSERT_EQ(p.g,0);
+  ASSERT_EQ(p.b,0);
+  ASSERT_EQ(p.a,255);
 
-
+  img.setPixel(320,240,128,200,2,100);
+  p=img.getPixel(320,240);
+  ASSERT_EQ(p.r,128);
+  ASSERT_EQ(p.g,200);
+  ASSERT_EQ(p.b,2);
+  ASSERT_EQ(p.a,100);
 
 }
 
 
 
+TEST(IMAGE,setPixelRGBA)
+{
+  Image img(640,480,255,255,255,255);
+  img.setPixel(0,0,RGBA{255,0,0,255});
+  
+  auto p=img.getPixel(0,0);
+  ASSERT_EQ(p.r,255);
+  ASSERT_EQ(p.g,0);
+  ASSERT_EQ(p.b,0);
+  ASSERT_EQ(p.a,255);
+
+  img.setPixel(320,240,RGBA{128,200,2,100});
+  p=img.getPixel(320,240);
+  ASSERT_EQ(p.r,128);
+  ASSERT_EQ(p.g,200);
+  ASSERT_EQ(p.b,2);
+  ASSERT_EQ(p.a,100);
+
+}
 
 
 

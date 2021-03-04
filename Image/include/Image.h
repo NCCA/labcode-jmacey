@@ -12,6 +12,9 @@ class Image
     size_t width() const;
     size_t height() const;
     RGBA getPixel(size_t _x, size_t _y) const ;
+    void setPixel(size_t _x, size_t _y, unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a);
+    void setPixel(size_t _x, size_t _y, RGBA _p);
+
   void clear(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a);
 
   private :
