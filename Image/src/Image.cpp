@@ -1,4 +1,5 @@
 #include "Image.h"
+#include <OpenImageIO/imageio.h>
 
 Image::Image(size_t _w, size_t _h)
 {
@@ -57,3 +58,7 @@ void Image::setPixel(size_t _x, size_t _y, RGBA _p)
 }
 
 
+bool Image::save(std::string_view _fname) const
+{
+ return true; 
+}

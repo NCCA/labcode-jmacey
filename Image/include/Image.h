@@ -2,6 +2,7 @@
 #define IMAGE_H_
 #include "rgba.h"
 #include <memory>
+#include <string_view>
 class Image
 {
   public :
@@ -15,7 +16,10 @@ class Image
     void setPixel(size_t _x, size_t _y, unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a);
     void setPixel(size_t _x, size_t _y, RGBA _p);
 
-  void clear(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a);
+    void clear(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a);
+
+    bool Image::save(std::string_view _fname) const;
+
 
   private :
     size_t m_width=0;
