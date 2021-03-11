@@ -18,7 +18,7 @@ int main()
   Image img(c_width,c_height,255,255,255,255);
 
   RGBA p{0,0,0,255};
-  for(size_t i=0; i<100000; ++i)
+  for(size_t i=0; i<10000000; ++i)
   {
     img.setPixel(width(gen),height(gen),
     cv(gen),cv(gen),cv(gen),255
