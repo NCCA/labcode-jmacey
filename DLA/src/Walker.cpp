@@ -1,4 +1,5 @@
 #include "Walker.h"
+#include <iostream>
 
 #include <random>
 
@@ -12,6 +13,7 @@ Walker::Walker(size_t _w, size_t _h)
 {
   m_image = std::make_unique<Image>(_w,_h,255,255,255,0);
   initRNG();
+  resetStart();
 
 }
 
@@ -26,7 +28,7 @@ void Walker::initRNG()
 
 void Walker::randomImageSeed()
 {
-  m_image->setPixel(m_xRand(g_rng), m_yRand(g_rng),0,0,0,255);
+  m_image->setPixel(m_xRand(g_rng), m_yRand(g_rng),255,255,255,255);
 }
 
 void Walker::saveImage(const std::string &_fname)
@@ -34,3 +36,22 @@ void Walker::saveImage(const std::string &_fname)
   m_image->save(_fname);
 }
 
+void Walker::setColour(const RGBA &_c)
+{
+  m_colour=_c;
+}
+
+bool Walker::walk()
+{
+  bool walking=true;
+  bool found=false;
+
+  return found;
+}
+
+void Walker::resetStart()
+{
+  m_xpos=m_xRand(g_rng);
+  m_ypos=m_xRand(g_rng);
+  std::cout<<"New Start "<<m_xpos<<' '<<m_ypos<<'\n';
+}

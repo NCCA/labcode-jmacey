@@ -7,6 +7,6 @@ int main()
   Walker w(400,400);
   for(int i=0; i<100; i++)
     w.randomImageSeed();
-  w.saveImage("test.png");
+  w.saveImage("test.tif");
   return EXIT_SUCCESS;
 }
