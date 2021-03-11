@@ -9,6 +9,7 @@ project(DLA_build)
 find_package(OpenImageIO CONFIG REQUIRED)
 find_package(IlmBase CONFIG REQUIRED)
 find_package(OpenEXR CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 
 
 # Here we set the C++ standard to use
@@ -26,3 +27,4 @@ target_sources(DLA PRIVATE src/main.cpp
 target_link_libraries(DLA PRIVATE OpenImageIO::OpenImageIO OpenImageIO::OpenImageIO_Util)
 target_link_libraries(DLA PRIVATE  IlmBase::Iex IlmBase::Half IlmBase::Imath IlmBase::IexMath)
 target_link_libraries(DLA PRIVATE OpenEXR::IlmImf OpenEXR::IlmImfUtil OpenEXR::IlmImfConfig)
+target_link_libraries(DLA PRIVATE  fmt::fmt-header-only)

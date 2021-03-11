@@ -31,6 +31,12 @@ void Walker::randomImageSeed()
   m_image->setPixel(m_xRand(g_rng), m_yRand(g_rng),255,255,255,255);
 }
 
+void Walker::setImageSeed(size_t _x, size_t _y)
+{
+  m_image->setPixel(_x,_y,255,255,255,255);
+}
+
+
 void Walker::saveImage(const std::string &_fname)
 {
   m_image->save(_fname);
@@ -44,7 +50,40 @@ void Walker::setColour(const RGBA &_c)
 bool Walker::walk()
 {
   bool walking=true;
-  bool found=false;
+  bool found=true;
+
+  while(walking)
+  {
+    // move the walker
+    m_xpos += g_walkDir(g_rng);
+    m_ypos += g_walkDir(g_rng);
+    if(m_xpos ==0 || m_xpos >= m_image->width()-1 ||
+       m_ypos ==0 || m_ypos >= m_image->height()-1 )
+    {
+      walking = false;
+      found =false;
+      break;
+    } // end valid image bounds check
+    RGBA p;
+    // see if we have a hit
+    for(int y=-1; y<=1; ++y)
+    {
+      for(int x=-1; x<=1; ++x)
+      {
+        p=m_image->getPixel(m_xpos+x,m_ypos+y);
+        if(p.a == 255)
+        {
+          //std::cout<<"found seed "<<m_xpos<<' '<<m_ypos<<'\n';
+          m_image->setPixel(m_xpos,m_ypos,m_colour);
+          walking =false;
+          found =true;
+          break;
+        }
+      }
+    }
+  } // end while walking
+
+
 
   return found;
 }
@@ -52,6 +91,6 @@ bool Walker::walk()
 void Walker::resetStart()
 {
   m_xpos=m_xRand(g_rng);
-  m_ypos=m_xRand(g_rng);
-  std::cout<<"New Start "<<m_xpos<<' '<<m_ypos<<'\n';
+  m_ypos=m_yRand(g_rng);
+ // std::cout<<"New Start "<<m_xpos<<' '<<m_ypos<<'\n';
 }

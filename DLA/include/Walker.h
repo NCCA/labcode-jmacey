@@ -11,6 +11,7 @@ class Walker
     Walker(const Walker &)=delete;
     void initRNG();
     void randomImageSeed();
+    void setImageSeed(size_t _x, size_t _y);
     void saveImage(const std::string &_fname);
     void setColour(const RGBA &_c);
     bool walk();
