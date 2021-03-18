@@ -10,6 +10,7 @@ class Emitter
     void update();
     void draw() const;
   private :
+    void resetParticle(Particle &io_p);
     std::vector<Particle> m_particles;
     Vec3 m_pos;
 

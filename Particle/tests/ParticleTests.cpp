@@ -5,6 +5,7 @@
 TEST(Emitter,ctor)
 {
   Emitter e(Vec3(2.0f,2.0f,2.0f),10);
+  
 }
 
 

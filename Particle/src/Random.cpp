@@ -33,6 +33,7 @@ float Random::randomPositiveFloat(float _mult)
 
 Vec3 Random::randomVectorOnSphere(float _radius )
 {
+	
 	float phi = randomPositiveFloat(static_cast<float>(M_PI * 2.0f));
 	float costheta = randomFloat();
 	float u =randomPositiveFloat();
@@ -42,4 +43,5 @@ Vec3 Random::randomVectorOnSphere(float _radius )
 									 r * sin(theta) * sin(phi),
 									 r * cos(theta)
 									);
+								
 }

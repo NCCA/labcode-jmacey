@@ -6,7 +6,8 @@ struct Particle
   Vec3 pos;
   Vec3 dir;
   Vec3 colour;
-  int life=100;
+  int life=0;
+  int maxLife=0;
   float size=1.0f;
 };
 
