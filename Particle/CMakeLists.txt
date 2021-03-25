@@ -31,5 +31,5 @@ add_executable(ParticleTests)
 add_compile_definitions(_USE_MATH_DEFINES)
 
 target_sources(ParticleTests PRIVATE tests/ParticleTests.cpp  src/Emitter.cpp src/Vec3.cpp src/Random.cpp  include/Emitter.h include/Particle.h include/Vec3.h)
-target_link_libraries(ParticleTests PRIVATE GTest::gtest GTest::gtest_main )
+target_link_libraries(ParticleTests PRIVATE GTest::gtest GTest::gtest_main fmt::fmt-header-only )
 gtest_discover_tests(ParticleTests)

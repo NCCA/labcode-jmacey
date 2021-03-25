@@ -10,6 +10,7 @@ int main()
   {
     e.update();
     e.draw();
+    e.saveFrame(i);
   }
   return EXIT_SUCCESS;
 }

@@ -9,6 +9,7 @@ class Emitter
     Emitter(Vec3 _pos, size_t _numPart);
     void update();
     void draw() const;
+    void saveFrame(size_t _frameNo) const;
   private :
     void resetParticle(Particle &io_p);
     std::vector<Particle> m_particles;
