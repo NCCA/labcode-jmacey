@@ -19,16 +19,28 @@ Emitter::Emitter(Vec3 _pos, size_t _numPart,float _spread, Vec3 _emitDir)
 
 void Emitter::resetParticle(Particle &io_p)
 {
-  io_p.pos=m_pos;
-  io_p.dir=m_emitDir * Random::randomPositiveFloat() + Random::randomVectorOnSphere() * m_spread;
-  io_p.dir.m_y=std::abs(io_p.dir.m_y);
-  io_p.colour = Random::randomPositiveVec3();
-  io_p.life = 0;
-  io_p.maxLife= static_cast<int>(Random::randomPositiveFloat(1000)+50);
-  io_p.size = 0.01f;
+  if(Random::randomPositiveFloat(500) > 450)
+  {
+    io_p.pos=m_pos;
+    io_p.dir=m_emitDir * Random::randomPositiveFloat() + Random::randomVectorOnSphere() * m_spread;
+    io_p.dir.m_y=std::abs(io_p.dir.m_y);
+    io_p.colour = Random::randomPositiveVec3();
+    io_p.life = 0;
+    io_p.maxLife= static_cast<int>(Random::randomPositiveFloat(1000)+50);
+    io_p.size = 0.01f;
+  }
+
+  else
+  {
+    io_p.pos=m_pos;
+    io_p.dir=Vec3(0,0,0);
+    io_p.colour = Vec3(0,0,0);
+    io_p.life = 0;
+    io_p.maxLife= static_cast<int>(Random::randomPositiveFloat(100)+50);
+    io_p.size = 0.01f;
+  }
+
 }
-
-
 
 void Emitter::update(float _dt)
 {
