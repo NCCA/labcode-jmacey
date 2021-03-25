@@ -8,6 +8,8 @@ class Vec3
     Vec3(float _x, float _y, float _z) : 
     m_x{_x},m_y{_y},m_z{_z}{}
     void operator +=(const Vec3 &_r); 
+    Vec3 operator *(float _f) const;
+    Vec3 operator +(const Vec3 &_rhs) const;
 
 
     float m_x=0.0f;

@@ -4,7 +4,7 @@
 #include "Vec3.h"
 TEST(Emitter,ctor)
 {
-  Emitter e(Vec3(2.0f,2.0f,2.0f),10);
+  Emitter e(Vec3(2.0f,2.0f,2.0f),10,1.5,{0,10,0});
   
 }
 
